@@ -1,8 +1,10 @@
 installed-fonts
 ===============
 
-Shows installed fonts on web browser
+Shows installed fonts on web browser.  
+using: [gabriel/font-detect-js](https://github.com/gabriel/font-detect-js)
 
+#### Run
 ```sh
 $ harp server
 ```
