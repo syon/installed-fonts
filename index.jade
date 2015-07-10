@@ -3,9 +3,10 @@
     span Checking Flash version...
 
   .columns
-    .one-fourth
+    .one-fourth.column
       nav#fontnamelist.menu
-
+    .three-fourths.column
+      #content
 
 #font-detect-swf
 
@@ -14,8 +15,34 @@ script(src="/assets/font-detect/swfobject.js")
 script(src="/assets/font-detect/font-detect.js")
 script(src="/app.js")
 
-script.
-  $(function() {
-    app = new App();
-    console.log(app);
-  });
+script
+  :coffee
+    $ ->
+      app = new App(renderFontNameList)
+
+    renderFontNameList = (fonts) ->
+      for font in fonts
+        a = document.createElement("a")
+        $(a).addClass "menu-item"
+        $(a).attr "href", "#"
+        $(a).text font.fontName
+        $("#fontnamelist").append(a)
+      
+      renderFonts fonts
+    
+    renderFonts = (fonts) ->
+
+      text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+
+      for font in fonts
+        nameNode = document.createElement "code"
+        $(nameNode).addClass "fontname"
+        $(nameNode).html font.fontName
+        $("#content").append nameNode
+        
+        node = document.createElement "p"
+        $(node).css("font-family", "'#{font.fontName}'")
+        $(node).addClass("preview")
+        $(node).html(text)
+        $("#content").append(node)
