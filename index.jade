@@ -18,7 +18,11 @@ script(src="/app.js")
 script
   :coffee
     $ ->
-      app = new App(renderFontNameList)
+      app = new App(render)
+
+    render = (fonts) ->
+      renderFontNameList fonts
+      renderFonts fonts
 
     renderFontNameList = (fonts) ->
       for font in fonts
@@ -27,8 +31,6 @@ script
         $(a).attr "href", "#"
         $(a).text font.fontName
         $("#fontnamelist").append(a)
-      
-      renderFonts fonts
     
     renderFonts = (fonts) ->
 
@@ -43,6 +45,6 @@ script
         
         node = document.createElement "p"
         $(node).css("font-family", "'#{font.fontName}'")
-        $(node).addClass("preview")
-        $(node).html(text)
+        $(node).addClass "preview"
+        $(node).html text
         $("#content").append(node)
