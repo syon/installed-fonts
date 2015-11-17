@@ -1,4 +1,4 @@
-class App
+class InstalledFonts
 
   _swfpath = "assets/font-detect/FontList.swf"
   @fonts = []

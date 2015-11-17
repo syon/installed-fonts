@@ -6,7 +6,7 @@ var PreviewBox = React.createClass({
     return {data: []};
   },
   componentDidMount: function() {
-    var app = new App(this.loadPreviews);
+    var app = new InstalledFonts(this.loadPreviews);
   },
   render: function() {
     return (
@@ -15,7 +15,6 @@ var PreviewBox = React.createClass({
           <PreviewMenu data={this.state.data} />
         </div>
         <div className="previewBox three-fourths column">
-          <h1>Previews</h1>
           <PreviewList data={this.state.data} />
         </div>
       </div>
