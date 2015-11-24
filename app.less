@@ -5,7 +5,23 @@
   background-color: rgba(0,0,0,0.04);
   border-radius: 3px;
 }
+
 .preview {
   margin: 0.5em 0 2.5em;
   font-size: 26px;
+  word-wrap: break-word;
+}
+
+.previewForm {
+  textarea {
+    font-size: 14px;
+    min-height: 50px;
+    max-height: 200px;
+    padding: 10px;
+    resize: vertical;
+    background-color: #fafafa;
+    &:focus {
+      background-color: #fff;
+    }
+  }
 }

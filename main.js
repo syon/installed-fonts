@@ -55,9 +55,10 @@ var PreviewForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="previewForm" onSubmit={this.handleSubmit}>
-        <textarea ref="text" defaultValue={this.props.lorem} className="input-block" placeholder="Preview text" />
-        <input type="submit" value="Update" className="btn" />
+      <form className="previewForm">
+        <textarea onChange={this.handleSubmit} ref="text"
+          defaultValue={this.props.lorem} className="input-block"
+          placeholder="Preview text" />
       </form>
     );
   }
