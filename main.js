@@ -15,30 +15,11 @@ var PreviewBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="columns">
-        <div className="previewMenu one-fourth column">
-          <PreviewMenu data={this.state.data} />
-        </div>
-        <div className="previewBox three-fourths column">
-          <PreviewForm lorem={this.state.lorem} onPreviewSubmit={this.handlePreviewSubmit} />
-          <PreviewList lorem={this.state.lorem} data={this.state.data} />
-        </div>
+      <div>
+        <PreviewForm lorem={this.state.lorem} onPreviewSubmit={this.handlePreviewSubmit} />
+        <hr />
+        <PreviewList lorem={this.state.lorem} data={this.state.data} />
       </div>
-    );
-  }
-});
-
-var PreviewMenu = React.createClass({
-  render: function() {
-    var fontNameNodes = this.props.data.map(function(font, idx) {
-      return (
-        <a href="#" className="menu-item" key={idx}>{font.fontName}</a>
-      );
-    });
-    return (
-      <nav className="menu">
-        {fontNameNodes}
-      </nav>
     );
   }
 });
@@ -55,10 +36,17 @@ var PreviewForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="previewForm">
-        <textarea onChange={this.handleSubmit} ref="text"
-          defaultValue={this.props.lorem} className="input-block"
-          placeholder="Preview text" />
+      <form className="previewForm columns">
+        <div className="columns">
+          <div className="one-fourth column">
+            <input type="text" className="input-block" />
+          </div>
+          <div className="three-fourths column">
+            <textarea onChange={this.handleSubmit} ref="text"
+              defaultValue={this.props.lorem} className="input-block"
+              placeholder="Preview text" />
+          </div>
+        </div>
       </form>
     );
   }
@@ -84,11 +72,15 @@ var Preview = React.createClass({
   render: function() {
     var previewStyle = {fontFamily: this.props.fontFamily};
     return (
-      <div className="preview">
-        <code className="fontname">{this.props.fontFamily}</code>
-        <p className="preview" style={previewStyle}>
-          {this.props.lorem}
-        </p>
+      <div className="columns">
+        <div className="one-fourth column">
+          <code className="fontname">{this.props.fontFamily}</code>
+        </div>
+        <div className="three-fourths column">
+          <p className="preview" style={previewStyle}>
+            {this.props.lorem}
+          </p>
+        </div>
       </div>
     );
   }
